@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1 class="w3-center">Book List</h1>
+  {% if book_list %}
+  <table class="tb1 tb2">
+    <tr>
+      <th class="tb1 w3-center">Books</th>
+      <th>Tác giả</th>
+    </tr>
+    {% for book in book_list %}
+    <tr>
+      <td class="w3-padding"><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></td>
+      <td>{{book.author}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+    <p>There are no books in the library.</p>
+  {% endif %}
+  <button><a href="{% url 'book-create'%}">Thêm sách</a></button>
+{% endblock %}

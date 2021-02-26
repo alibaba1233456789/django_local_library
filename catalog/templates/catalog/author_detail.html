@@ -1,0 +1,11 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <br><br>
+  <p><strong>Họ và Tên: </strong>{{author.last_name}} {{author.first_name}}</p>
+  <p><strong>Ngày sinh:</strong> {{author.date_of_birth}}</p>
+  {% if perms.catalog.can_mark_returned %}
+  <a href="{% url 'author-update' author.pk %}"><button>Cập nhật / thay đổi</button></a>
+  <br>
+  {% endif %}
+{% endblock %}
